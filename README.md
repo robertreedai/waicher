@@ -3,8 +3,8 @@
 Waicher is an always-on observer for AI agents working out of a shared repo. It watches for work landing, reads what came back, checks it against the rules you wrote, and reports what it found. It fixes nothing and ships nothing, same as pulling a tech's PMs at random, the work gets done and somebody still looks.
 
 ## How v1 works
-- **Trigger:** a pull request. Agents push their work to a branch and open a PR to `main`, and that fires Waicher. A plain push to `main` does nothing.
-- **Read-only:** Waicher reads the PR, checks it against the files in `/rules`, writes one findings file, and pushes that file to a `claude/` branch. It never edits, merges, ships, or messages anyone.
+- **Trigger:** a pull request. Agents push their work to a branch and open a PR to `main`, and that fires Waicher. It runs again whenever new commits land on the PR, so a fix gets re-checked. A plain push to `main` does nothing.
+- **Read-only:** Waicher reads the PR, checks it against the files in `/rules`, and posts what it found as a comment on the PR. In v1 the report is a comment only; a findings file in the repo comes in v2. It never edits, merges, ships, or messages anyone.
 - **You decide:** a person reads the findings and makes the call.
 
 ## Layout
